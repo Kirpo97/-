@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<data>
+  <row>
+    <level_0>0</level_0>
+    <index>0</index>
+    <shape>square</shape>
+    <degrees>360</degrees>
+    <sides>4.0</sides>
+  </row>
+  <row>
+    <level_0>1</level_0>
+    <index>1</index>
+    <shape>circle</shape>
+    <degrees>360</degrees>
+    <sides/>
+  </row>
+  <row>
+    <level_0>2</level_0>
+    <index>2</index>
+    <shape>triangle</shape>
+    <degrees>180</degrees>
+    <sides>3.0</sides>
+  </row>
+</data>

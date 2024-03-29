@@ -1,40 +1,47 @@
-
 {
-    "PurchaseOrder": {
-      "Address": [
+  "table": [
+    {
+      "_attributes": {
+        "border": "1",
+        "class": [
+          "dataframe"
+        ]
+      },
+      "thead": [
         {
-          "Name": "Ellen Adams",
-          "Street": "123 Maple Street",
-          "City": "Mill Valley",
-          "State": "CA",
-          "Zip": 10999,
-          "Country": "USA"
-        },
-        {
-          "Name": "Tai Yee",
-          "Street": "8 Oak Avenue",
-          "City": "Old Town",
-          "State": "PA",
-          "Zip": 95819,
-          "Country": "USA"
+          "tr": [
+            {
+              "_attributes": {
+                "style": "text-align: right;"
+              },
+              "th": [
+                {},
+                {
+                  "_value": "Address.0.Name\tAddress.0.Street\tAddress.0.City\tAddress.0.State\tAddress.0.Zip\tAddress.0.Country\tAddress.0._Type\tAddress.1.Name\tAddress.1.Street\tAddress.1.City\tAddress.1.State\tAddress.1.Zip\tAddress.1.Country\tAddress.1._Type\tDeliveryNotes\tItems.Item.0.ProductName\tItems.Item.0.Quantity\tItems.Item.0.USPrice\tItems.Item.0.Comment\tItems.Item.0._PartNumber\tItems.Item.1.ProductName\tItems.Item.1.Quantity\tItems.Item.1.USPrice\tItems.Item.1.ShipDate\tItems.Item.1._PartNumber\t_PurchaseOrderNumber\t_OrderDate"
+                }
+              ]
+            }
+          ]
         }
       ],
-      "DeliveryNotes": "Please leave packages in shed by driveway.",
-      "Items": {
-        "Item": [
-          {
-            "ProductName": "Lawnmower",
-            "Quantity": 1,
-            "USPrice": 148.95,
-            "Comment": "Confirm this is electric"
-          },
-          {
-            "ProductName": "Baby Monitor",
-            "Quantity": 2,
-            "USPrice": 39.98,
-            "ShipDate": "1999-05-21"
-          }
-        ]
-      }
+      "tbody": [
+        {
+          "tr": [
+            {
+              "th": [
+                {
+                  "_value": "0"
+                }
+              ],
+              "td": [
+                {
+                  "_value": "Ellen Adams\\t123 Maple Street\\tMill Valley\\tCA\\t10999\\tUSA\\tShipping\\tTai Yee\\t8 Oak Avenue\\tOld Town\\tPA\\t95819\\tUSA\\tBilling\\tPlease leave packages in shed by driveway.\\tLawnmower\\t1\\t148.95\\tConfirm this is electric\\t872-AA\\tBaby Monitor\\t2\\t39.98\\t1999-05-21\\t926-AA\\t99503\\t1999-10-20"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
-  
+  ]
+}

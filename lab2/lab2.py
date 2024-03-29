@@ -3,211 +3,85 @@
 import json
 import xmltodict
 import pandas as pd
-import csv
+import html_to_json
 
+def WriteFile(File_2, dataPath_2, nameFile_2, prefix_2):
+    f = open(dataPath_2 + nameFile_2 + prefix_2, 'w')
+    f.write(File_2)
+    f.close()  
+    
+def JSON_to_XML(file):
+    File_1 = json.load(file)
+    return xmltodict.unparse(File_1) 
+        
+def XML_to_CSV(file):
+    File_1 = xmltodict.parse(file.read())
+    return pd.DataFrame(File_1)
+
+def CSV_to_TSV(dataPath_1, nameFile_1, prefix_1):
+    File_1 = pd.read_csv(dataPath_1 + nameFile_1 + prefix_1, escapechar='\n')
+    return pd.DataFrame(File_1)
+
+def TSV_to_HTML(dataPath_1, nameFile_1, prefix_1, dataPath_2, nameFile_2, prefix_2):
+    File_1 = pd.read_csv(dataPath_1 + nameFile_1 + prefix_1)
+    return File_1.to_html()
+
+def HTML_to_JSON(file):
+    html_file = file.read()
+    return html_to_json.convert(html_file) 
+        
 def Convert(dataPath_1, nameFile_1, prefix_1, dataPath_2, nameFile_2, prefix_2):
     with open(dataPath_1 + nameFile_1 + prefix_1, encoding='utf-8') as file:
         
-        if (prefix_1 == '.json') and (prefix_2 == '.xml'):
-            File_1 = json.load(file)
-            File_2 = xmltodict.unparse(File_1)
-            xml = open(dataPath_2 + nameFile_2 + prefix_2, 'w')
-            xml.write(File_2)
-            xml.close()            
+        if (prefix_1 == '.json') and (prefix_2 == '.xml'):     # JSON to XML (1)
+            File_2 = JSON_to_XML(file, dataPath_2, nameFile_2, prefix_2)
+            WriteFile(File_2, dataPath_2, nameFile_2, prefix_2)
             
-        if (prefix_1 == '.json') and (prefix_2 == '.csv'):
-            File_1 = pd.read_json(file)
-            File_1.to_csv(dataPath_2 + nameFile_2 + prefix_2, encoding='utf-8', index=False)
+        if (prefix_1 == '.xml') and (prefix_2 == '.csv'):      # XML to CSV (2)
+            File_2 = XML_to_CSV(file)
+            File_2.to_csv( dataPath_2 + nameFile_2 + prefix_2, encoding='utf-8', index=False)
+        
+        if (prefix_1 == '.csv') and (prefix_2 == '.tsv'):      # CSV to TSV (3)   
+            File_2 = CSV_to_TSV(dataPath_1, nameFile_1, prefix_1)
+            File_2.to_csv( dataPath_2 + nameFile_2 + prefix_2, sep='\t', encoding='utf-8', index=False )
+        
+        if (prefix_1 == '.tsv') and (prefix_2 == '.html'):    # TSV to HTML (4)
+            File_2 = TSV_to_HTML(dataPath_1, nameFile_1, prefix_1, dataPath_2, nameFile_2, prefix_2)
+            WriteFile(File_2, dataPath_2, nameFile_2, prefix_2)
             
-        if (prefix_1 == '.json') and (prefix_2 == '.tsv'):    
-            File_1 = csv.DictWriter(dataPath_2 + nameFile_2 + prefix_2, sorted(file[0].keys()), delimiter='\t')
-            File_1.writeheader()
-            File_1.writerows(file)
+        if (prefix_1 == '.html') and (prefix_2 == '.json'):   # HTML to JSON (5)    
+            File_2 = HTML_to_JSON(file)
+            out_file = open(dataPath_2 + nameFile_2 + prefix_2, "w")
+            json.dump(File_2, out_file, indent = 2) 
+            out_file.close() 
             
-            asd
-        print("Конвертация ... Успех!")     
+        if (prefix_1 == '.xml') and (prefix_2 == '.csv'): # XML to CSV (6)
+           pass
+
+        if (prefix_1 == '.xml') and (prefix_2 == '.tsv'): # XML to TSV (7)
+            pass
+           
+        if (prefix_1 == '.xml') and (prefix_2 == '.html'): # XML to HTML (8)
+            pass    
             
-        '''               
-                
-            if (prefix_1 == '.json') and (prefix_2 == 'xml'):
-                
-                
-            if (prefix_1 == '.json') and (prefix_2 == 'xml'):
-                
+        if (prefix_1 == '.csv') and (prefix_2 == '.json'): # CSV to JSON (9)
+            pass     
+        
+        if (prefix_1 == '.csv') and (prefix_2 == '.xml'): # CSV to XML (10)
+           pass
+       
+        if (prefix_1 == '.csv') and (prefix_2 == '.tsv'):  # CSV to TSV (11)
+            pass
+        
+        # CSV to HTML (12)
+
+        
+        print("\nКонвертация ... Успех!\n")     
             
-            if (prefix_1 == '.json') and (prefix_2 == 'xml'):
-            
-            
-            if (prefix_1 == '.json') and (prefix_2 == 'xml'):
                 
-            
-            if (prefix_1 == '.json') and (prefix_2 == 'xml'):
-                
-                
-            if (prefix_1 == '.json') and (prefix_2 == 'xml'):
-                
-                
-            if (prefix_1 == '.json') and (prefix_2 == 'xml'):
-                
-                
-            if (prefix_1 == '.json') and (prefix_2 == 'xml'):
-                
-            
-            if (prefix_1 == '.json') and (prefix_2 == 'xml'):
-                
-                
-            if (prefix_1 == '.json') and (prefix_2 == 'xml'):
-                
-                
-            if (prefix_1 == '.json') and (prefix_2 == 'xml'):
-                
-                
-            if (prefix_1 == '.json') and (prefix_2 == 'xml'):
-                
-            
-            if (prefix_1 == '.json') and (prefix_2 == 'xml'):
-            
-            
-            if (prefix_1 == '.json') and (prefix_2 == 'xml'):
-                
-            
-            if (prefix_1 == '.json') and (prefix_2 == 'xml'):
-                
-                
-            if (prefix_1 == '.json') and (prefix_2 == 'xml'):
-                
-                
-            if (prefix_1 == '.json') and (prefix_2 == 'xml'):
-                
-                
-            if (prefix_1 == '.json') and (prefix_2 == 'xml'):
-                    '''
-                    
 
 ''' 
-# JSON to TSV (3)
 
-import pandas as pd
-def JSON_to_TSV():
-    table = pd.read_json('...', orient='records')
-    table.to_csv(sys.stdout, sep='\t', index=False)
-
-# JSON to HTML (4)
-import json2html
-def JSON_to_HTML():
-    infoFromJson = json.loads('jsonfile')
-    print(json2html.convert(json = infoFromJson)) 
-
-# XML to JSON (5)
-from xml.dom import minidom
-import simplejson as json
-def XML_to_JSON(element):
-    dict_data = dict()
-    if element.nodeType == element.TEXT_NODE:
-        dict_data['data'] = element.data
-    if element.nodeType not in [element.TEXT_NODE, element.DOCUMENT_NODE, 
-                                element.DOCUMENT_TYPE_NODE]:
-        for item in element.attributes.items():
-            dict_data[item[0]] = item[1]
-    if element.nodeType not in [element.TEXT_NODE, element.DOCUMENT_TYPE_NODE]:
-        for child in element.childNodes:
-            child_name, child_dict = parse_element(child)
-            if child_name in dict_data:
-                try:
-                    dict_data[child_name].append(child_dict)
-                except AttributeError:
-                    dict_data[child_name] = [dict_data[child_name], child_dict]
-            else:
-                dict_data[child_name] = child_dict 
-    return element.nodeName, dict_data
-
-# XML to CSV (6)
-import xml.etree.ElementTree as Xet 
-import pandas as pd 
-def XML_to_CSV():
-    xmlparse = Xet.parse('sample.xml') 
-    root = xmlparse.getroot() 
-    for i in root: 
-        name = i.find("name").text 
-        phone = i.find("phone").text 
-        email = i.find("email").text 
-        date = i.find("date").text 
-        country = i.find("country").text 
-        rows.append({"name": name, 
-                    "phone": phone, 
-                    "email": email, 
-                    "date": date, 
-                    "country": country}) 
-    df = pd.DataFrame(rows, columns=cols) 
-    df.to_csv('output.csv') 
-
-# XML to TSV (7)
-from xml.etree import ElementTree
-def XML_to_TSV():
-    file = 'sample.xml'
-    tree = ElementTree.parse(file)
-    root = tree.getroot()
-    for sentence in root.iter('sentence'):
-        for opinion in sentence.iter('Opinion'):
-            print([opinion.attrib['polarity'], sentence.find('text').text, opinion.attrib['category']])
-
-# XML to HTML (8)
-import aspose.pdf as ap
-def XML_to_HTML(self, infile, outfile):
-        path_infile = self.dataDir + infile
-        path_outfile = self.dataDir + outfile
-        options = ap.XmlLoadOptions("template.xslt")
-        # Open XML document
-        document = ap.Document(path_infile, options)
-        option = ap.HtmlSaveOptions()
-        document.Save(path_outfile, option)
-        print(infile + " converted into " + outfile)
-
-# CSV to JSON (9)
-import csv
-import json
-def CSV_to_JSON():
-    csvfile = open('file.csv', 'r')
-    jsonfile = open('file.json', 'w')
-    fieldnames = ("FirstName","LastName","IDNumber","Message")
-    reader = csv.DictReader( csvfile, fieldnames)
-    for row in reader:
-        json.dump(row, jsonfile)
-        jsonfile.write('\n')
-
-# CSV to XML (10)
-import csv  
-import pandas as pd
-def CSV_to_XML():        
-    f = open('movies2.csv')
-    csv_f = csv.reader(f)   
-    data = []
-
-    for row in csv_f: 
-        data.append(row)
-    f.close()
-
-    df = pd.read_csv('movies2.csv')
-    header= list(df.columns)
-
-    def convert_row(row):
-        str_row = """<%s>%s</%s> \n"""*(len(header)-1)
-        str_row = """<%s>%s""" +"\n"+ str_row + """</%s>"""
-        var_values = [list_of_elments[k] for k in range(1,len(header)) for list_of_elments in [header,row,header]]
-        var_values = [header[0],row[0]]+var_values+[header[0]]
-        var_values =tuple(var_values)
-        return str_row % var_values
-
-    text ="""<collection shelf="New Arrivals">"""+"\n"+'\n'.join([convert_row(row) for row in data[1:]])+"\n" +"</collection >"
-    print(text)
-    with open('output.xml', 'w') as myfile: 
-        pass
-    #    myfile.write(text)
-
-# CSV to TSV (11)
-def CSV_to_TSV(): 
-    df = pd.read_csv(r'a.csv', escapechar='\n')
-    df.to_csv('data.tsv', sep='\t', encoding='utf-8', index=False)
 
 # CSV to HTML (12)
 import pandas as pd
@@ -327,8 +201,8 @@ if __name__ == '__main__':
    
 
   Convert('/home/kirill/projects/Methods-and-algorithms-for-weakly-structured-data/Methods-and-algorithms-for-weakly-structured-data/lab2/data/',
-      'menu', '.json', '/home/kirill/projects/Methods-and-algorithms-for-weakly-structured-data/Methods-and-algorithms-for-weakly-structured-data/lab2/data/',
-          'menu', '.tsv'
+      'example', '.html', '/home/kirill/projects/Methods-and-algorithms-for-weakly-structured-data/Methods-and-algorithms-for-weakly-structured-data/lab2/data/',
+          'example', '.json'
               )
   
   

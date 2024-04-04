@@ -1,0 +1,10 @@
+# Погода на неделю
+weather:
+  Tue: 6
+  Wed: 9
+  Thu: 11
+  Fri: 8
+  Sat: 3
+  Sun: 7
+  Mon: 7
+  Tue: 7

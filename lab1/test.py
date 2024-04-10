@@ -30,7 +30,7 @@ def get_method(set_services, input_method=None):
     print('\nВведён метод :', input_method)
     return input_method
 
-def init(input_services=None, input_method=None, value=None):
+def test(input_services=None, input_method=None, value=None):
     try:           
         cat = get_cat(input_services)
         try:
@@ -53,16 +53,16 @@ def init(input_services=None, input_method=None, value=None):
 if __name__ == "__main__":
 
     print('\nТест на запросы конвертации температуры: \n')
-    init()
-    init(input_services = 'Temperature')
-    init(input_services = 'Temperature', input_method='CelsiusToFahrenheit', value='10')
-    init(input_services = 'Temperature', input_method='FahrenheitToCelsius', value='100')
-    init(input_services = 'Temperature', input_method='CelsiusToFahrenheit', value='')
-    init(input_services = 'Temperature', input_method='FahrenheitToCelsius', value='')
-    init(input_services = 'Temperature', input_method='123', value='55')
-    init(input_services = '123', input_method='', value='')
+    test()
+    test(input_services = 'Temperature')
+    test(input_services = 'Temperature', input_method='CelsiusToFahrenheit', value='10')
+    test(input_services = 'Temperature', input_method='FahrenheitToCelsius', value='100')
+    test(input_services = 'Temperature', input_method='CelsiusToFahrenheit', value='')
+    test(input_services = 'Temperature', input_method='FahrenheitToCelsius', value='')
+    test(input_services = 'Temperature', input_method='123', value='55')
+    test(input_services = '123', input_method='', value='')
 
     print('\nТест сервис континенты: \n')
-    init(input_services = 'Continents', input_method='ListOfContinentsByName', value='')
-    init(input_services = 'Continents', input_method='ListOfContinentsByCode', value='')
-    init(input_services = 'Continents', input_method='ListOfCurrenciesByName', value='')
+    test(input_services = 'Continents', input_method='ListOfContinentsByName', value='')
+    test(input_services = 'Continents', input_method='ListOfContinentsByCode', value='')
+    test(input_services = 'Continents', input_method='ListOfCurrenciesByName', value='')

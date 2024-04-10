@@ -116,10 +116,8 @@ def Convert(dataPath_1, nameFile_1, prefix_1, dataPath_2, nameFile_2, prefix_2):
         
 if __name__ == '__main__':
    
-  Convert('/home/kirill/projects/Methods-and-algorithms-for-weakly-structured-data/Methods-and-algorithms-for-weakly-structured-data/lab2/data/',
-      'ex4', '.tsv', '/home/kirill/projects/Methods-and-algorithms-for-weakly-structured-data/Methods-and-algorithms-for-weakly-structured-data/lab2/data/',
-          'ex4', '.json'
-              )
-  
-  
+    Convert('/home/kirill/projects/Methods-and-algorithms-for-weakly-structured-data/Methods-and-algorithms-for-weakly-structured-data/lab2/data/',
+        'ex4', '.tsv', '/home/kirill/projects/Methods-and-algorithms-for-weakly-structured-data/Methods-and-algorithms-for-weakly-structured-data/lab2/data/',
+            'ex4', '.json'
+                )
   
